@@ -1,4 +1,22 @@
+import { useSelector } from "react-redux";
+import { selectCars } from "redux/selectors";
+
 export const Filters = () => {
+        const cars = useSelector(selectCars);
+
+    const brands = cars?.map(car => car.make);
+    console.log('brands', brands);
+    const uniqueBrands = brands.filter(
+  (brand, index, array) => array.indexOf(brand) === index
+    );
+        console.log('brauniqueBrandsnds', uniqueBrands);
+
+    const pricesArray = [];
+    for (let index = 30; index < 501; index += 10) {
+                            pricesArray.push(index)                          
+    };
+    console.log('pricesArray', pricesArray);
+
     return (
         <>
             <form>
@@ -11,19 +29,13 @@ export const Filters = () => {
                             // hidden="hidden"
                             // disabled
                         >Please choose car brand</option>
-                        <option value="xs">Extra Small</option>
-                        <option value="s">Small</option>
-                        <option value="m">Medium</option>
-                        <option value="l">Large</option>
+{uniqueBrands?.map((brand) => <option value={brand}>{brand}</option>)}
                     </select>
                 </label>
                 <label>Price/ 1 hour
                     <select name="price">
                         <option value="" defaultValue="Brand">To   $</option>
-                        <option value="xs">Extra Small</option>
-                        <option value="s">Small</option>
-                        <option value="m">Medium</option>
-                        <option value="l">Large</option>
+                        {pricesArray?.map((price) => <option value={price}>{price}</option>)}
                     </select>
                 </label>
                 <label>Сar mileage / km
