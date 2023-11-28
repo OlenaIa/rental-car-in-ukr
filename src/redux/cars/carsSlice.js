@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
-import { getCarsThunk } from './fetchCar';
+import { getCarsThunk, getFirstCarsThunk } from './fetchCar';
 
 const carsInitialState = {
     cars: [],
@@ -20,7 +20,7 @@ const onRejected = (state, { payload }) => {
     // state.isContactAdd = false;
 };
 
-const arrOfActs = [getCarsThunk];
+const arrOfActs = [getFirstCarsThunk, getCarsThunk];
 
 const addStatusToActs = status =>
     arrOfActs.map((el) => el[status]);
@@ -30,6 +30,11 @@ const carsSlice = createSlice({
     initialState: carsInitialState,
     extraReducers: builder => {
         builder
+            .addCase(getFirstCarsThunk.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.cars = payload;
+                state.error = null;
+            })
             .addCase(getCarsThunk.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.cars = payload;
