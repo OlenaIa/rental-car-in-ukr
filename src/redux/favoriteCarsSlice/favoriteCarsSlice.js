@@ -14,7 +14,7 @@ export const favoriteCarsSlice = createSlice({
             state.favorites.push(payload);
         },
         deleteFavoriteCar(state, { payload }) {
-            const index = state.favorites.findIndex(car => car === payload);
+            const index = state.favorites.findIndex(car => car.id === payload);
             state.favorites.splice(index, 1);
         }
     },

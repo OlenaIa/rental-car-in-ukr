@@ -7,27 +7,23 @@ import { selectFavoriteCars } from "redux/selectors";
 
 
 export const CarItem = ({ car, index }) => {
-        const dispatch = useDispatch();
-    const favoriteIdArr = useSelector(selectFavoriteCars);
-    console.log('favoriteIdArr', favoriteIdArr);
-
-    
+    const dispatch = useDispatch();
+    const favoriteCarsId = useSelector(selectFavoriteCars);
 
     const { id, make, model, year, img, rentalPrice, rentalCompany, type, functionalities, address } = car;
-    const cityCountry = address.split(', ').slice(-2);
+    const cityCountry = address?.split(', ').slice(-2);
     
     const [isCarFavorite, setIsCarFavorite] = useState(false);
 
     useEffect(() => {
-if (favoriteIdArr?.some(item => item === id)) {
-    setIsCarFavorite(true);
-    } else {setIsCarFavorite(false)}
-    }, [favoriteIdArr, id]);
+        if (favoriteCarsId?.some(car => car.id === id)) {
+            setIsCarFavorite(true);
+        } else { setIsCarFavorite(false) }
+    }, [favoriteCarsId, id]);
 
     const onClickHeart = () => {
-        isCarFavorite ? dispatch(deleteFavoriteCar(id)) : dispatch(addFavoriteCar(id));
+        isCarFavorite ? dispatch(deleteFavoriteCar(id)) : dispatch(addFavoriteCar(car));
     }
-
 
     return (
         <CarItemStyle key={id}>

@@ -1,21 +1,20 @@
-import { useSelector } from "react-redux";
-import { selectCars } from "redux/selectors";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCarsThunk } from "redux/cars/fetchCar";
+import { selectCarBrands } from "redux/selectors";
 
 export const Filters = () => {
-        const cars = useSelector(selectCars);
-
-    const brands = cars?.map(car => car.make);
-    console.log('brands', brands);
-    const uniqueBrands = brands.filter(
-  (brand, index, array) => array.indexOf(brand) === index
-    );
-        console.log('brauniqueBrandsnds', uniqueBrands);
+    const dispatch = useDispatch();
+    const carBrands = useSelector(selectCarBrands);
+    
+    useEffect(() => {
+        dispatch(getAllCarsThunk())
+    }, [dispatch]);
 
     const pricesArray = [];
     for (let index = 30; index < 501; index += 10) {
-                            pricesArray.push(index)                          
+        pricesArray.push(index);
     };
-    console.log('pricesArray', pricesArray);
 
     return (
         <>
@@ -25,11 +24,11 @@ export const Filters = () => {
                         {/* <option value="">Please choose car brand</option> */}
                         <option value=""
                             defaultValue="Brand"
-                            // selected="selected"
-                            // hidden="hidden"
-                            // disabled
+                        // selected="selected"
+                        // hidden="hidden"
+                        // disabled
                         >Please choose car brand</option>
-{uniqueBrands?.map((brand) => <option value={brand}>{brand}</option>)}
+                        {carBrands?.map((brand) => <option value={brand}>{brand}</option>)}
                     </select>
                 </label>
                 <label>Price/ 1 hour

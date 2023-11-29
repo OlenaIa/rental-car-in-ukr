@@ -6,7 +6,7 @@ flex-wrap: wrap;
 row-gap: 20px;
 column-gap: 15px;
 margin-bottom: 100px;
-
+justify-content: center;
 
   @media screen and (min-width: 768px) {
 row-gap: 30px;

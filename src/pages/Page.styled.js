@@ -27,3 +27,21 @@ export const Container = styled.div`
     margin-bottom: 50px;
   }
 `;
+
+export const EmptyPage = styled.div`
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    /* width: 100%; */
+font-weight: 600;
+      font-size: 40px;
+      color: var(--color-text-main);
+
+  @media screen and (min-width: 768px) {
+
+  }
+
+  @media screen and (min-width: 1440px) {
+
+  }
+`;
