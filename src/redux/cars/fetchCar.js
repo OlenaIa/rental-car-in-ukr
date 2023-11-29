@@ -1,17 +1,17 @@
 import axios from 'axios';
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 axios.defaults.baseURL = 'https://64ecb723f9b2b70f2bfad3ff.mockapi.io';
 // const url = new URL('https://PROJECT_TOKEN.mockapi.io/tasks');
 // url.searchParams.append('completed', false); //https://PROJECT_TOKEN.mockapi.io/tasks?completed=false
 
-export const options = {
-    width: '400px',
-    position: 'center-center',
-    timeout: 1500,
-    fontSize: '20px',
-};
+// export const options = {
+//     width: '400px',
+//     position: 'center-center',
+//     timeout: 1500,
+//     fontSize: '20px',
+// };
 
 const getFirstCars = async (_, thunkAPI) => {
     try {

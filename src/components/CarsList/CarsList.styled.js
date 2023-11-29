@@ -21,6 +21,7 @@ column-gap: 29px;
 `;
 
 export const LoadMore = styled.p`
+display: ${(props) => props.display || 'block'};;
 color: var(--color-text-loadmore);
 font-size: 16px;
 font-weight: 500;

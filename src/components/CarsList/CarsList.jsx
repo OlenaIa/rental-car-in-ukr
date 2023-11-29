@@ -15,10 +15,6 @@ export const CarsList = () => {
     console.log(cars.length);
     const [isLoadMore, setIsLoadMore] = useState(false);
 
-    // useEffect(() => {
-    //     setLoad(false);
-    // }, [])
-
     useEffect(() => {
         dispatch(getFirstCarsThunk())
     }, [dispatch]);
@@ -35,14 +31,13 @@ export const CarsList = () => {
                 {isLoading && <Loader />}
                 {(cars?.length > 0) && (<>
                     <CarsListStyle>
-                    {cars?.map((car) =>
-                        <CarItem car={car} key={car.id} />
-                    )}
-                </CarsListStyle>
+                        {cars?.map((car, index) =>
+                            <CarItem car={car} key={car.id} index={index} />
+                        )}
+                    </CarsListStyle>
                     <LoadMore onClick={onClickLoadMore} display={isLoadMore ? 'none' : 'block'}>Load more</LoadMore>
                 </>
-)}
-
+                )}
             </Container>
         </Section>
     )

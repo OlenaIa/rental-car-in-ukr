@@ -191,7 +191,7 @@ overflow: hidden;
 
 export const DescriptItem = styled.li`
 display: flex;
-
+flex-shrink: 1;
 /* color: var(--color-text-second); */
 &:not(:last-child) {
 
