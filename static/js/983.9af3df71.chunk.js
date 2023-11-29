@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrental_car_in_ukr=self.webpackChunkrental_car_in_ukr||[]).push([[983],{983:function(e,n,r){r.r(n);var a=r(184);n.default=function(){return(0,a.jsx)(a.Fragment,{children:"Home Page"})}}}]);
-//# sourceMappingURL=983.9af3df71.chunk.js.map

@@ -1,19 +1,22 @@
 {
   "files": {
     "main.css": "/rental-car-in-ukr/static/css/main.47413c21.css",
-    "main.js": "/rental-car-in-ukr/static/js/main.07c72d8c.js",
-    "static/js/983.9af3df71.chunk.js": "/rental-car-in-ukr/static/js/983.9af3df71.chunk.js",
-    "static/js/556.efeb31f5.chunk.js": "/rental-car-in-ukr/static/js/556.efeb31f5.chunk.js",
-    "static/js/395.78d6bfad.chunk.js": "/rental-car-in-ukr/static/js/395.78d6bfad.chunk.js",
+    "main.js": "/rental-car-in-ukr/static/js/main.6fa77a22.js",
+    "static/js/983.cd2520ab.chunk.js": "/rental-car-in-ukr/static/js/983.cd2520ab.chunk.js",
+    "static/js/239.0aaadba6.chunk.js": "/rental-car-in-ukr/static/js/239.0aaadba6.chunk.js",
+    "static/js/395.35f46ba9.chunk.js": "/rental-car-in-ukr/static/js/395.35f46ba9.chunk.js",
+    "static/js/881.ca93b5e8.chunk.js": "/rental-car-in-ukr/static/js/881.ca93b5e8.chunk.js",
     "index.html": "/rental-car-in-ukr/index.html",
+    "static/media/sprite.svg": "/rental-car-in-ukr/static/media/sprite.72546160259a3205d0d512cd9e5120c3.svg",
     "main.47413c21.css.map": "/rental-car-in-ukr/static/css/main.47413c21.css.map",
-    "main.07c72d8c.js.map": "/rental-car-in-ukr/static/js/main.07c72d8c.js.map",
-    "983.9af3df71.chunk.js.map": "/rental-car-in-ukr/static/js/983.9af3df71.chunk.js.map",
-    "556.efeb31f5.chunk.js.map": "/rental-car-in-ukr/static/js/556.efeb31f5.chunk.js.map",
-    "395.78d6bfad.chunk.js.map": "/rental-car-in-ukr/static/js/395.78d6bfad.chunk.js.map"
+    "main.6fa77a22.js.map": "/rental-car-in-ukr/static/js/main.6fa77a22.js.map",
+    "983.cd2520ab.chunk.js.map": "/rental-car-in-ukr/static/js/983.cd2520ab.chunk.js.map",
+    "239.0aaadba6.chunk.js.map": "/rental-car-in-ukr/static/js/239.0aaadba6.chunk.js.map",
+    "395.35f46ba9.chunk.js.map": "/rental-car-in-ukr/static/js/395.35f46ba9.chunk.js.map",
+    "881.ca93b5e8.chunk.js.map": "/rental-car-in-ukr/static/js/881.ca93b5e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.47413c21.css",
-    "static/js/main.07c72d8c.js"
+    "static/js/main.6fa77a22.js"
   ]
 }
