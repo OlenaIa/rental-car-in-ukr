@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/rental-car-in-ukr/static/css/main.47413c21.css",
-    "main.js": "/rental-car-in-ukr/static/js/main.6fa77a22.js",
+    "main.js": "/rental-car-in-ukr/static/js/main.aa5a2839.js",
     "static/js/983.cd2520ab.chunk.js": "/rental-car-in-ukr/static/js/983.cd2520ab.chunk.js",
-    "static/js/239.0aaadba6.chunk.js": "/rental-car-in-ukr/static/js/239.0aaadba6.chunk.js",
-    "static/js/395.35f46ba9.chunk.js": "/rental-car-in-ukr/static/js/395.35f46ba9.chunk.js",
+    "static/js/318.2cb80e5b.chunk.js": "/rental-car-in-ukr/static/js/318.2cb80e5b.chunk.js",
+    "static/js/395.27b60c97.chunk.js": "/rental-car-in-ukr/static/js/395.27b60c97.chunk.js",
     "static/js/881.ca93b5e8.chunk.js": "/rental-car-in-ukr/static/js/881.ca93b5e8.chunk.js",
     "index.html": "/rental-car-in-ukr/index.html",
     "static/media/sprite.svg": "/rental-car-in-ukr/static/media/sprite.72546160259a3205d0d512cd9e5120c3.svg",
     "main.47413c21.css.map": "/rental-car-in-ukr/static/css/main.47413c21.css.map",
-    "main.6fa77a22.js.map": "/rental-car-in-ukr/static/js/main.6fa77a22.js.map",
+    "main.aa5a2839.js.map": "/rental-car-in-ukr/static/js/main.aa5a2839.js.map",
     "983.cd2520ab.chunk.js.map": "/rental-car-in-ukr/static/js/983.cd2520ab.chunk.js.map",
-    "239.0aaadba6.chunk.js.map": "/rental-car-in-ukr/static/js/239.0aaadba6.chunk.js.map",
-    "395.35f46ba9.chunk.js.map": "/rental-car-in-ukr/static/js/395.35f46ba9.chunk.js.map",
+    "318.2cb80e5b.chunk.js.map": "/rental-car-in-ukr/static/js/318.2cb80e5b.chunk.js.map",
+    "395.27b60c97.chunk.js.map": "/rental-car-in-ukr/static/js/395.27b60c97.chunk.js.map",
     "881.ca93b5e8.chunk.js.map": "/rental-car-in-ukr/static/js/881.ca93b5e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.47413c21.css",
-    "static/js/main.6fa77a22.js"
+    "static/js/main.aa5a2839.js"
   ]
 }
