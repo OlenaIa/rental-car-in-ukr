@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
-import { getCarsThunk, getAllCarsThunk } from './fetchCar';
+import { getCarsThunk, getAllCarsThunk, getFilterCarsThunk } from './fetchCar';
+// import { nanoid } from 'nanoid'
 
 const carsInitialState = {
     cars: [],
@@ -19,7 +20,7 @@ const onRejected = (state, { payload }) => {
     state.error = payload;
 };
 
-const arrOfActs = [getAllCarsThunk, getCarsThunk];
+const arrOfActs = [getAllCarsThunk, getCarsThunk, getFilterCarsThunk];
 
 const addStatusToActs = status =>
     arrOfActs.map((el) => el[status]);
@@ -36,12 +37,18 @@ const carsSlice = createSlice({
                 const uniqueBrands = brands.filter(
                     (brand, index, array) => array.indexOf(brand) === index
                 );
-                state.carsBrands = uniqueBrands;
+                const uniqueBrandsObj = [{ value: 'all', label: 'All Brands' }, ...uniqueBrands.map(brand => {return { value: brand, label: brand }})];
+                state.carsBrands = uniqueBrandsObj;
                 state.error = null;
             })
             .addCase(getCarsThunk.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.cars = [...state.cars, ...payload];
+                state.error = null;
+            })
+            .addCase(getFilterCarsThunk.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.cars = payload;
                 state.error = null;
             })
             .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)

@@ -10,12 +10,13 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+import { filterReducer } from './filter/filterSlice';
 
 export const store = configureStore({
     reducer: {
         cars: carsReducer,
         favoriteCars: favoriteCarsPersistReducer,
-    //     filter: filterSlice.reducer,
+        filter: filterReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

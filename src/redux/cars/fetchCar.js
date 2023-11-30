@@ -32,6 +32,21 @@ const getCars = async (page, thunkAPI) => {
     }
 };
 
+const getFilterCars = async ({filterBrand, page}, thunkAPI) => {
+    try {
+        
+        const endPoint = (filterBrand.value === 'all') ? `page=${page}&limit=${LIMIT}` : `make=${filterBrand.value}`;
+        console.log('filterBrand in getFilterCars', filterBrand);
+        console.log('page in getFilterCars', page);
+        console.log('endPoint', endPoint);
+        const response = await axios.get(`/adverts?${endPoint}`);
+        return response.data;
+    }
+    catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    }
+};
+
 export const getCarsThunk = createAsyncThunk(
     'cars/getCars',
     getCars
@@ -39,4 +54,8 @@ export const getCarsThunk = createAsyncThunk(
 export const getAllCarsThunk = createAsyncThunk(
     'cars/getAllCars',
     getAllCars
+);
+export const getFilterCarsThunk = createAsyncThunk(
+    'cars/getFilterCars',
+    getFilterCars
 );
