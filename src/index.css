@@ -3,6 +3,7 @@
 :root {
   --color-text-main: #121417;
   --color-text-second: rgba(18, 20, 23, 0.50);
+  --color-text-conditions: #363535;
   --color-text-button-and-back: #FFF;
   --color-text-loadmore: #3470FF;
   --color-text-loadmore-hover: #0B44CD;
@@ -10,6 +11,7 @@
   --color-button: #3470FF;
   --color-button-hover: #0B44CD;
   --color-filter-field: #F7F7FB;
+  --color-back-conditions: #F9F9F9;
   --color-modal-wrap: rgba(18, 20, 23, 0.50);
 }
 body {

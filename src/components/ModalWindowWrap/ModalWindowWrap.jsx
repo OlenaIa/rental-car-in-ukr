@@ -1,47 +1,45 @@
-import React, { Children, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import sprite from '../../assets/sprite.svg';
 import {
   ModalContainer,
   CloseBtnWrapper,
-  ModalChildrenWrapper,
   BackdropModal,
 } from './ModalWindowWrap.styled';
 import { ModalPortal } from './ModalPortal';
-// import AddExerciseForm from '../../components/AddExerciseForm'
 
 export const ModalWindowWrap = ({ onClick, children }) => {
-  const handleKeyDown = (e) => {
+  const onKeyDown = (e) => {
     if (e.code === 'Escape') {
       onClick();
     }
   };
 
-  const handleCloseClick = () => {
+  const onClickClose = () => {
     onClick();
   };
 
-  const handleBackDropClick = (e) => {
+  const onClickBackDrop = (e) => {
     if (e.currentTarget === e.target) {
       onClick();
     }
   };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', onKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', onKeyDown);
     };
   });
 
   return (
     <ModalPortal>
-      <BackdropModal onClick={handleBackDropClick}>
+      <BackdropModal onClick={onClickBackDrop}>
         <ModalContainer>
-          {/* <CloseBtnWrapper onClick={handleCloseClick}>
-            <use href={`${sprite}#icon-cross`} />
-          </CloseBtnWrapper> */}
-          <ModalChildrenWrapper>{children}</ModalChildrenWrapper>
+          <CloseBtnWrapper onClick={onClickClose}>
+            <use href={`${sprite}#icon-x`} />
+          </CloseBtnWrapper>
+          {children}
         </ModalContainer>
       </BackdropModal>
     </ModalPortal>

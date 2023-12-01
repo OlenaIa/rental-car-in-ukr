@@ -153,18 +153,12 @@ font-weight: inherit;
 `;
 export const Span = styled.span`
 color: var(--color-text-loadmore);
-
-  @media screen and (min-width: 768px) {
-
-  }
-
-  @media screen and (min-width: 1440px) {
-  }
 `;
+
 export const DescriptListWrap = styled.div`
 display: flex;
-height: 36px;
-gap: 4px;
+height: ${props => props.height || 'auto'};
+gap: ${props => props.$gap || '4px'};
 flex-direction: column;
 
   @media screen and (min-width: 768px) {
@@ -174,13 +168,12 @@ flex-direction: column;
   }
 `;
 export const DescriptList = styled.ul`
-display: flex;
+display: inline-flex;
 height: 18px;
-
-column-gap: 6px;
+gap: 6px;
 color: var(--color-text-second);
-flex-wrap: nowrap;
-overflow: hidden;
+white-space: nowrap;
+overflow-x: ${props => props.$overflow || 'scroll'};
 
   @media screen and (min-width: 768px) {
   }
@@ -192,16 +185,14 @@ overflow: hidden;
 export const DescriptItem = styled.li`
 display: flex;
 flex-shrink: 1;
-/* color: var(--color-text-second); */
-&:not(:last-child) {
 
-
-&:after {
+&:not(:first-child) {
+&:before {
     display: block;
     height: 16px;
     width: 1px;
 background-color: rgba(18, 20, 23, 0.10);
-margin-left: 6px;
+margin-right: 6px;
 content: '';
 
 }}
@@ -214,12 +205,10 @@ content: '';
 
 export const Button = styled.button`
 display: flex;
-width: 100%;
+width: ${props => props.width || '100%'};
 height: 44px;
 padding: 12px;
 justify-content: center;
-align-items: center;
-flex-shrink: 0;
 border: none;
 border-radius: 12px;
 background: var(--color-button);

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFavoriteCar, deleteFavoriteCar } from "redux/favoriteCarsSlice/favoriteCarsSlice";
 import { selectFavoriteCars } from "redux/selectors";
 import { ModalWindowWrap } from "components/ModalWindowWrap/ModalWindowWrap";
+import { ModalReadMore } from "components/ModalReadMore/ModalReadMore";
 
 
 export const CarItem = ({ car, index }) => {
@@ -33,7 +34,7 @@ const toggleModal = () => {
     
     return (
         <CarItemStyle key={id}>
-            {showModal && <ModalWindowWrap onClick={toggleModal}>Modal</ModalWindowWrap>}
+            {showModal && <ModalWindowWrap onClick={toggleModal}><ModalReadMore car={car} /></ModalWindowWrap>}
             <CarCard>
                 <ImgWrap>
                     <Img src={img ?
@@ -55,14 +56,14 @@ const toggleModal = () => {
                         </TitleH3>
                         <p>{rentalPrice}</p>
                     </TitleWrap>
-                    <DescriptListWrap>
-                        <DescriptList>
+                    <DescriptListWrap height='36px'>
+                        <DescriptList $overflow='hidden'>
                             <DescriptItem>{cityCountry[0]}</DescriptItem>
                             <DescriptItem>{cityCountry[1]}</DescriptItem>
                             <DescriptItem>{rentalCompany}</DescriptItem>
                             {/* <DescriptItem>Premium</DescriptItem> */}
                         </DescriptList>
-                        <DescriptList>
+                        <DescriptList $overflow='hidden'>
                             <DescriptItem>{type}</DescriptItem>
                             {/* Подумати як вдесятый машині вивести майк на екран */}
                             <DescriptItem> {(index === 0 || index > 4 || index !== 10) ? model : make}</DescriptItem>
