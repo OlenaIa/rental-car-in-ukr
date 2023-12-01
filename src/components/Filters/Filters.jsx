@@ -76,9 +76,6 @@ console.log('mileageFrom');
                 value={selectedPrice}
           />
                 </Label>
-                <form
-                    // onSubmit={onSubmitFilter}
-                >
                     <InputWrap>
                         <Label>Сar mileage / km
                             <Input type="number"
@@ -99,8 +96,9 @@ value={mileageTo}
                             step='10'
                             $radius='0px 14px 14px 0px' />
                     </InputWrap>
-                    <ButtonSearch type="submit">Search</ButtonSearch>
-                </form>
+                    <ButtonSearch type="submit"
+                                        // onSubmit={onSubmitFilter}
+>Search</ButtonSearch>
             </Form>
         </>
     )

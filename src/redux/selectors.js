@@ -13,4 +13,3 @@ export const selectFavoriteCars = state => state.favoriteCars.favorites;
 // --------------- FILTER -----------------
 
 export const selectBrand = state => state.filter.brand;
-export const selectPage = state => state.filter.page;

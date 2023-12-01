@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const filterInitialState = {
     brand: { value: 'all', label: 'Enter the text' },
-    page: 1,
 };
 
 export const filterSlice = createSlice({
@@ -12,13 +11,9 @@ export const filterSlice = createSlice({
         brandSet(state, {payload}) {
             state.brand = payload;
         },
-        pageSet(state, {payload}) {
-            console.log('payload', payload);
-            state.page = 2;
-        },
     },
     });
 
 export const filterReducer = filterSlice.reducer;
 
-export const { brandSet, pageSet } = filterSlice.actions;
+export const { brandSet } = filterSlice.actions;

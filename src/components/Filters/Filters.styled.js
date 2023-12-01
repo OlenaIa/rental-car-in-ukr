@@ -15,6 +15,8 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
+display: flex;
+    flex-direction: column;
     color: var(--color-text-label);
     font-size: 14px;
     font-weight: 500;
