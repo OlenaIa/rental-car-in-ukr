@@ -34,7 +34,7 @@ const toggleModal = () => {
     
     return (
         <CarItemStyle key={id}>
-            {showModal && <ModalWindowWrap onClick={toggleModal}><ModalReadMore car={car} /></ModalWindowWrap>}
+            {showModal && <ModalWindowWrap onClick={toggleModal}><ModalReadMore car={car} key={id}/></ModalWindowWrap>}
             <CarCard>
                 <ImgWrap>
                     <Img src={img ?

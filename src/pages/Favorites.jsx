@@ -11,7 +11,7 @@ const Favorite = () => {
     return (
         <>
             <Section>
-                <Container>
+                <Container $top='50px'>
                     {(favoriteCarsId?.length > 0) ?
                         <CarsListStyle>
                         {favoriteCarsId?.map((car, index) =>

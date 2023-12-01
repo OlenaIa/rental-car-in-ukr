@@ -10,9 +10,9 @@ const Catalog = () => {
                     <Filters />
                 </Container>
             </Section>
-            <CarsList/>
+            <CarsList />
         </>
     )
-}
+};
 
 export default Catalog;
