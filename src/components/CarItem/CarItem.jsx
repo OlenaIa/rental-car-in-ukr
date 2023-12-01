@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavoriteCar, deleteFavoriteCar } from "redux/favoriteCarsSlice/favoriteCarsSlice";
 import { selectFavoriteCars } from "redux/selectors";
+import { ModalWindowWrap } from "components/ModalWindowWrap/ModalWindowWrap";
 
 
 export const CarItem = ({ car, index }) => {
@@ -14,6 +15,7 @@ export const CarItem = ({ car, index }) => {
     const cityCountry = address?.split(', ').slice(-2);
     
     const [isCarFavorite, setIsCarFavorite] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (favoriteCarsId?.some(car => car.id === id)) {
@@ -25,8 +27,13 @@ export const CarItem = ({ car, index }) => {
         isCarFavorite ? dispatch(deleteFavoriteCar(id)) : dispatch(addFavoriteCar(car));
     }
 
+const toggleModal = () => {
+    setShowModal((prevState) => !prevState);
+    };
+    
     return (
         <CarItemStyle key={id}>
+            {showModal && <ModalWindowWrap onClick={toggleModal}>Modal</ModalWindowWrap>}
             <CarCard>
                 <ImgWrap>
                     <Img src={img ?
@@ -65,7 +72,7 @@ export const CarItem = ({ car, index }) => {
                     </DescriptListWrap>
                 </DescriptionWrap>
             </CarCard>
-            <Button>Learn more</Button>
+            <Button onClick={toggleModal}>Learn more</Button>
         </CarItemStyle>
     )
 };

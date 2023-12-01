@@ -10,7 +10,7 @@
   --color-button: #3470FF;
   --color-button-hover: #0B44CD;
   --color-filter-field: #F7F7FB;
-  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --color-modal-wrap: rgba(18, 20, 23, 0.50);
 }
 body {
   /* -webkit-font-smoothing: antialiased;
