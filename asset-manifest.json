@@ -1,24 +1,25 @@
 {
   "files": {
     "main.css": "/rental-car-in-ukr/static/css/main.b0ee2f52.css",
-    "main.js": "/rental-car-in-ukr/static/js/main.91cb46be.js",
-    "static/js/983.cd2520ab.chunk.js": "/rental-car-in-ukr/static/js/983.cd2520ab.chunk.js",
-    "static/js/209.76050aa9.chunk.js": "/rental-car-in-ukr/static/js/209.76050aa9.chunk.js",
+    "main.js": "/rental-car-in-ukr/static/js/main.7e70660f.js",
+    "static/js/586.1582e4bf.chunk.js": "/rental-car-in-ukr/static/js/586.1582e4bf.chunk.js",
+    "static/js/209.ba565fc2.chunk.js": "/rental-car-in-ukr/static/js/209.ba565fc2.chunk.js",
     "static/js/395.251d4854.chunk.js": "/rental-car-in-ukr/static/js/395.251d4854.chunk.js",
     "static/js/43.9d0f3aaf.chunk.js": "/rental-car-in-ukr/static/js/43.9d0f3aaf.chunk.js",
-    "static/js/593.e83373ed.chunk.js": "/rental-car-in-ukr/static/js/593.e83373ed.chunk.js",
+    "static/js/295.4e6006e8.chunk.js": "/rental-car-in-ukr/static/js/295.4e6006e8.chunk.js",
+    "static/media/hero-car.jpg": "/rental-car-in-ukr/static/media/hero-car.7408bee866c98bf283d5.jpg",
     "index.html": "/rental-car-in-ukr/index.html",
     "static/media/sprite.svg": "/rental-car-in-ukr/static/media/sprite.72546160259a3205d0d512cd9e5120c3.svg",
     "main.b0ee2f52.css.map": "/rental-car-in-ukr/static/css/main.b0ee2f52.css.map",
-    "main.91cb46be.js.map": "/rental-car-in-ukr/static/js/main.91cb46be.js.map",
-    "983.cd2520ab.chunk.js.map": "/rental-car-in-ukr/static/js/983.cd2520ab.chunk.js.map",
-    "209.76050aa9.chunk.js.map": "/rental-car-in-ukr/static/js/209.76050aa9.chunk.js.map",
+    "main.7e70660f.js.map": "/rental-car-in-ukr/static/js/main.7e70660f.js.map",
+    "586.1582e4bf.chunk.js.map": "/rental-car-in-ukr/static/js/586.1582e4bf.chunk.js.map",
+    "209.ba565fc2.chunk.js.map": "/rental-car-in-ukr/static/js/209.ba565fc2.chunk.js.map",
     "395.251d4854.chunk.js.map": "/rental-car-in-ukr/static/js/395.251d4854.chunk.js.map",
     "43.9d0f3aaf.chunk.js.map": "/rental-car-in-ukr/static/js/43.9d0f3aaf.chunk.js.map",
-    "593.e83373ed.chunk.js.map": "/rental-car-in-ukr/static/js/593.e83373ed.chunk.js.map"
+    "295.4e6006e8.chunk.js.map": "/rental-car-in-ukr/static/js/295.4e6006e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b0ee2f52.css",
-    "static/js/main.91cb46be.js"
+    "static/js/main.7e70660f.js"
   ]
 }
