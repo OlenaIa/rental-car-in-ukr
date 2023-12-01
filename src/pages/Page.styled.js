@@ -48,3 +48,34 @@ export const EmptyPage = styled.div`
   @media screen and (min-width: 1440px) {
   }
 `;
+
+export const WelcomeWrap = styled.div`
+  display: flex;
+  height: 100vh;
+  margin-right: auto;
+  padding: 20px 0px;
+  /* width: 100%; */
+  font-weight: 600;
+  font-size: 40px;
+  color: var(--color-text-main);
+  
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+export const Welcome = styled.div`
+  display: block;
+  height: 200px;
+  padding: 40px;
+  color: var(--color-text-main);
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 40px;
+  
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
