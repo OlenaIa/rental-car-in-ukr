@@ -6,7 +6,7 @@ const Catalog = () => {
     return (
         <>
             <Section>
-                <Container>
+                <Container $top='50px'>
                     <Filters />
                 </Container>
             </Section>

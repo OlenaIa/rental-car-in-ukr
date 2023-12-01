@@ -174,6 +174,7 @@ gap: 6px;
 color: var(--color-text-second);
 white-space: nowrap;
 overflow-x: ${props => props.$overflow || 'scroll'};
+overflow-y: hidden;
 
   @media screen and (min-width: 768px) {
   }

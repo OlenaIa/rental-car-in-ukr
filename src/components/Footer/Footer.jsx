@@ -1,15 +1,13 @@
-import { FooterStyle } from "./Footer.styled";
+import { FooterStyle, LinkStyle } from "./Footer.styled";
 
 const Footer = () => {
     return (
         <FooterStyle>
-        <p>Copyright ©</p>
-            {/* <Link color="inherit" href="#"> */}
-                        Olena Iankovska
-                    {/* </Link>{' '} */}
-
-    </FooterStyle>
-  
+            <p>Copyright © </p>
+            <LinkStyle href="https://github.com/OlenaIa" target="_blank">
+                 Olena Iankovska
+            </LinkStyle>
+        </FooterStyle>
     )
 };
 

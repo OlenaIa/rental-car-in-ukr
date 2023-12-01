@@ -112,7 +112,7 @@ export const ModalReadMore = ({ car }) => {
                     </Block>
                 </ModalDescriptionWrap>
             </ModalCard>
-            <Button width='168px'><a href="tel:+380730000000">Rental car</a></Button>
+            <Button width='168px' onClick={() => window.location.href = 'tel:+380730000000'}>Rental car</Button>
         </ModalCarWrap>
     )
 };
