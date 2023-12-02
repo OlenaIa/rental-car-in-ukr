@@ -17,6 +17,7 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
+position: relative;
   display: flex;
   flex-direction: column;
   color: var(--color-text-label);
@@ -33,29 +34,53 @@ export const InputWrap = styled.div`
 export const Input = styled.input`
   width: 160px;
   height: 48px;
-  padding: 14px 24px;
+  padding: ${props => props.$padding || '14px 14px 14px 70px'};
   margin-top: 8px;
   border-radius: ${props => props.$radius || '14px'};
   border: none;
   border-right: ${props => props.$border || 'none'};
   background-color: var(--color-filter-field);
+  color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+
+  &:invalid {
+    border: 1px solid red;
+  }
+`;
+
+export const FalseInput = styled.div`
+  display: flex;
+  color: var(--color-text-main);
+  position: absolute;
+  bottom: 14px;
+  left: 24px;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.1;
+`;
 
-  &::placeholder {
-    color: var(--color-text-main);
-    opacity: 1;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.1;
-  }
+export const Blink = styled.div`
+  margin-left: 1px;
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  background-color: black;
+  animation: cursor-blink 1s infinite;
 
-  @media screen and (min-width: 768px) {
-  }
+  @keyframes cursor-blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    }
+`;
 
-  @media screen and (min-width: 1440px) {
-  }
+export const WrapSecondInput = styled.div`
+  position: relative;
 `;
 
 export const ButtonSearch = styled.button`
