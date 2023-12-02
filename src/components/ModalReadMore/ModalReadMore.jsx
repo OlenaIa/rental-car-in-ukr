@@ -1,3 +1,4 @@
+import { makeComaInMileage, makeNumberFromPrice } from "service/serviceFunc";
 import {
     Button,
     DescriptItem,
@@ -43,12 +44,6 @@ export const ModalReadMore = ({ car }) => {
     const age = (conditionWithAge) => {
         const conditionWithAgeArr = conditionWithAge.split(': ');
         return conditionWithAgeArr;
-    };
-    
-    const makeComaInMileage = (mileage) => {
-        const mileageStringArr = mileage.toString().split('');
-        mileageStringArr.splice(1, 0, ',');
-        return mileageStringArr.join('');
     };
     
     return (
@@ -106,7 +101,7 @@ export const ModalReadMore = ({ car }) => {
                             <ConditionsList>
                                 <ConditionsItem>{arrOfConditions[2]}</ConditionsItem>
                                 <ConditionsItem>Mileage: <Span>{makeComaInMileage(mileage)}</Span></ConditionsItem>
-                                <ConditionsItem>Price: <Span>{rentalPrice.replace('$', '')}$</Span></ConditionsItem>
+                                <ConditionsItem>Price: <Span>{makeNumberFromPrice(rentalPrice)}$</Span></ConditionsItem>
                             </ConditionsList>
                         </DescriptListWrap>
                     </Block>

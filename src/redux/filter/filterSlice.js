@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const filterInitialState = {
     brand: { value: 'all', label: 'Enter the text' },
     toPrice: { value: 'all', label: 'To $' },
-    mileageFrom: null,
-    mileageTo: null
+    mileageFrom: 0,
+    mileageTo: 0,
 };
 
 export const filterSlice = createSlice({

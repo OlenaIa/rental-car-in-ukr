@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectBrand, selectCarBrands, selectMileageFrom, selectMileageTo, selectToPrice } from "redux/selectors";
 import { Blink, ButtonSearch, Form, Input, InputWrap, Label, FalseInput, WrapSecondInput, firstSelectStyles, secondSelectStyles } from "./Filters.styled";
 import Select from 'react-select';
-import { brandSet, mileageFromSet, mileageToSet } from "redux/filter/filterSlice";
+import { brandSet, mileageFromSet, mileageToSet, toPriceSet } from "redux/filter/filterSlice";
+import { makeComaInMileage } from "service/serviceFunc";
 
 export const Filters = () => {
     const dispatch = useDispatch();
@@ -13,10 +14,10 @@ export const Filters = () => {
     const filterMileageFrom = useSelector(selectMileageFrom);
     const filterMileageTo = useSelector(selectMileageTo);
 
+    console.log('filterToPrice', filterToPrice);
     console.log('filterMileageFrom', filterMileageFrom);
-        console.log('filterMileageTo', filterMileageTo);
+    console.log('filterMileageTo', filterMileageTo);
 
-    const [selectedPrice, setSelectedPrice] = useState(null);
     const [mileageToWithComa, setMileageToWithComa] = useState('');
     const [mileageFromWithComa, setMileageFromWithComa] = useState('');
 
@@ -27,8 +28,8 @@ export const Filters = () => {
     };
 
  const reset = () => {
-        setMileageFrom('');
-        setMileageTo('');
+        dispatch(mileageFromSet(null));
+        dispatch(mileageFromSet(null));
         setMileageToWithComa('');
         setMileageFromWithComa('');
     };
@@ -39,20 +40,6 @@ export const Filters = () => {
         // const searchValue = form.search.value
         console.log('form', form);
         reset();
-    };
-
-   
-
-    const makeComaInMileage = (mileage) => {
-        const lengthMileage = mileage.toString().length;
-
-        if (lengthMileage <= 3) {
-            return mileage;
-        };
-
-        const mileageStringArr = mileage.split('');
-        mileageStringArr.splice((lengthMileage-3), 0, ',');
-        return mileageStringArr.join('');
     };
 
     const handleChange = (e) => {
@@ -77,6 +64,11 @@ export const Filters = () => {
         console.log('e', e);
         dispatch(brandSet(e));
     };
+
+    const onChangeToPrice = (e) => {
+        console.log('e', e);
+        dispatch(toPriceSet(e));
+    };
     
     return (
         <Form>
@@ -92,18 +84,17 @@ export const Filters = () => {
             </Label>
             <Label>Price/ 1 hour
                 <Select
-                    onChange={setSelectedPrice}
+                    onChange={onChangeToPrice}
                     options={pricesArray}
                     isSearchable
                     placeholder='To   $'
                     styles={secondSelectStyles}
-                    value={selectedPrice}
+                    value={filterToPrice}
                 />
             </Label>
             <InputWrap>
                 <Label>Сar mileage / km
                     <Input type="number"
-                        inputmode='numeric'
                         pattern="[0-9]{1,5}"
                         title="Only number. From 1 to 5 digits"
                         name="mileageFrom"
@@ -123,7 +114,6 @@ export const Filters = () => {
                     <Input type="number"
                         pattern="[0-9]{1,5}"
                         title="Only number. From 1 to 5 digits"
-                        inputmode='numeric'
                     name="mileageTo"
                     value={filterMileageTo}
                         onChange={handleChange}
