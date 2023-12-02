@@ -48,6 +48,17 @@ export const Input = styled.input`
   &:invalid {
     border: 1px solid red;
   }
+
+  &:invalid + span::after {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    content: "Only 5 digits";
+    color: red;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+}
 `;
 
 export const FalseInput = styled.div`

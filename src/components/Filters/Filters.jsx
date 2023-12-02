@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectBrand, selectCarBrands } from "redux/selectors";
+import { selectBrand, selectCarBrands, selectMileageFrom, selectMileageTo, selectToPrice } from "redux/selectors";
 import { Blink, ButtonSearch, Form, Input, InputWrap, Label, FalseInput, WrapSecondInput, firstSelectStyles, secondSelectStyles } from "./Filters.styled";
 import Select from 'react-select';
-import { brandSet } from "redux/filter/filterSlice";
+import { brandSet, mileageFromSet, mileageToSet } from "redux/filter/filterSlice";
 
 export const Filters = () => {
     const dispatch = useDispatch();
     const carBrands = useSelector(selectCarBrands);
     const filterBrand = useSelector(selectBrand);
+    const filterToPrice = useSelector(selectToPrice);
+    const filterMileageFrom = useSelector(selectMileageFrom);
+    const filterMileageTo = useSelector(selectMileageTo);
+
+    console.log('filterMileageFrom', filterMileageFrom);
+        console.log('filterMileageTo', filterMileageTo);
 
     const [selectedPrice, setSelectedPrice] = useState(null);
-    const [mileageFrom, setMileageFrom] = useState('');
-    const [mileageTo, setMileageTo] = useState('');
     const [mileageToWithComa, setMileageToWithComa] = useState('');
     const [mileageFromWithComa, setMileageFromWithComa] = useState('');
 
@@ -57,12 +61,11 @@ export const Filters = () => {
 
         switch (e.target.name) {
             case 'mileageFrom':
-                setMileageFrom(value);
+                dispatch(mileageFromSet(value));
                 setMileageFromWithComa(valueWithComa);
                 break;
             case 'mileageTo':
-
-                setMileageTo(value);
+                dispatch(mileageToSet(value));
                 setMileageToWithComa(valueWithComa);
                 break;
             default:
@@ -101,34 +104,34 @@ export const Filters = () => {
                 <Label>Сar mileage / km
                     <Input type="number"
                         inputmode='numeric'
-                        pattern="[0-9]{1,6}"
-                        title="Only number. From 1 to 6 digitals"
-
+                        pattern="[0-9]{1,5}"
+                        title="Only number. From 1 to 5 digits"
                         name="mileageFrom"
-                        value={mileageFrom}
+                        value={filterMileageFrom}
                         onChange={handleChange}
-                        min="0"
-                        max='999998'
+                        min="1"
+                        max='99998'
                         $radius='14px 0px 0px 14px'
                         $border='1px solid rgba(138, 138, 137, 0.20)'
                     />
+                    <span></span>
                     <FalseInput>From {mileageFromWithComa}
                         {mileageFromWithComa.length > 0 && <Blink></Blink>}
                     </FalseInput>
                 </Label>
                 <WrapSecondInput>
                     <Input type="number"
-                        pattern="[0-9]{1,6}"
-                        title="Only number. From 1 to 6 digitals"
-
+                        pattern="[0-9]{1,5}"
+                        title="Only number. From 1 to 5 digits"
                         inputmode='numeric'
                     name="mileageTo"
-                    value={mileageTo}
+                    value={filterMileageTo}
                         onChange={handleChange}
                         min="1"
-                        max='999999'
+                        max='99999'
                         $radius='0px 14px 14px 0px' 
-                        $padding='14px 14px 14px 48px'/>
+                        $padding='14px 14px 14px 48px' />
+                                        <span></span>
                     <FalseInput>To {mileageToWithComa}
                                                 {mileageToWithComa.length > 0 && <Blink></Blink>}
                     </FalseInput>
