@@ -12,11 +12,11 @@ export const CarItem = ({ car, index }) => {
     const dispatch = useDispatch();
     const favoriteCarsId = useSelector(selectFavoriteCars);
 
-    const { mileage, id, make, model, year, img, rentalPrice, rentalCompany, type, functionalities, address } = car;
+    const { id, make, model, year, img, rentalPrice, rentalCompany, type, functionalities, address } = car;
     const cityCountry = address?.split(', ').slice(-2);
     
     const [isCarFavorite, setIsCarFavorite] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (favoriteCarsId?.some(car => car.id === id)) {
@@ -28,13 +28,13 @@ export const CarItem = ({ car, index }) => {
         isCarFavorite ? dispatch(deleteFavoriteCar(id)) : dispatch(addFavoriteCar(car));
     }
 
-const toggleModal = () => {
-    setShowModal((prevState) => !prevState);
+    const toggleModal = () => {
+        setShowModal((prevState) => !prevState);
     };
     
     return (
         <CarItemStyle key={id}>
-            {showModal && <ModalWindowWrap onClick={toggleModal}><ModalReadMore car={car} key={id}/></ModalWindowWrap>}
+            {showModal && <ModalWindowWrap onClick={toggleModal}><ModalReadMore car={car} key={id} /></ModalWindowWrap>}
             <CarCard>
                 <ImgWrap>
                     <Img src={img ?
@@ -58,15 +58,15 @@ const toggleModal = () => {
                     </TitleWrap>
                     <DescriptListWrap height='36px'>
                         <DescriptList $overflow='hidden'>
-                            <DescriptItem>{mileage}</DescriptItem>
+                            <DescriptItem>{cityCountry[0]}</DescriptItem>
                             <DescriptItem>{cityCountry[1]}</DescriptItem>
                             <DescriptItem>{rentalCompany}</DescriptItem>
-                            {/* <DescriptItem>Premium</DescriptItem> */}
+                            <DescriptItem>Premium</DescriptItem>
                         </DescriptList>
                         <DescriptList $overflow='hidden'>
                             <DescriptItem>{type}</DescriptItem>
-                            {/* Подумати як вдесятый машині вивести майк на екран */}
-                            <DescriptItem> {(index === 0 || index > 4 || index !== 10) ? model : make}</DescriptItem>
+                            <DescriptItem> {index === 10 ? make :
+                                ((index === 0 || index > 4) ? model : make)}</DescriptItem>
                             <DescriptItem>{id}</DescriptItem>
                             <DescriptItem>{functionalities[0]}</DescriptItem>
                         </DescriptList>

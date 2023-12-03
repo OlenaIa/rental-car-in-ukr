@@ -38,6 +38,7 @@ export const EmptyPage = styled.div`
   font-weight: 600;
   font-size: 22px;
   color: var(--color-text-main);
+  margin: 0 auto;
   
   @media screen and (min-width: 768px) {
     font-size: 30px;

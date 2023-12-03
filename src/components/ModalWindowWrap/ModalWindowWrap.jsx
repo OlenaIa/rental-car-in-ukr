@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
 import sprite from '../../assets/sprite.svg';
-import {
-  ModalContainer,
-  CloseBtnWrapper,
-  BackdropModal,
-} from './ModalWindowWrap.styled';
+import { ModalContainer, CloseBtnWrapper, BackdropModal } from './ModalWindowWrap.styled';
 import { ModalPortal } from './ModalPortal';
 
 export const ModalWindowWrap = ({ onClick, children }) => {
