@@ -6,6 +6,8 @@ import Select from 'react-select';
 import { filterSet } from "redux/filter/filterSlice";
 import { makeComaInMileage } from "service/serviceFunc";
 import { Report } from 'notiflix/build/notiflix-report-aio';
+import { CloseBtnWrapper } from "components/ModalWindowWrap/ModalWindowWrap.styled";
+import sprite from '../../assets/sprite.svg';
 
 export const options = {
     svgSize: '42px',
@@ -18,46 +20,33 @@ export const Filters = () => {
     const carBrands = useSelector(selectCarBrands);
 
     const [brand, setBrand] = useState({ value: 'all', label: 'Enter the text' });
-    const [toPrice, setToPrice] = useState({ value: 'all', label: 'To $' });
+    const [toPrice, setToPrice] = useState({ value: 'all', label: '' });
     const [mileageTo, setMileageTo] = useState('');
     const [mileageFrom, setMileageFrom] = useState('');
     const [mileageToWithComa, setMileageToWithComa] = useState('');
     const [mileageFromWithComa, setMileageFromWithComa] = useState('');
 
     const pricesArray = [{ value: 'all', label: 'All price' }];
-    for (let index = 30; index < 501; index += 10) {
+    for (let index = 10; index < 501; index += 10) {
         pricesArray.push({ value: index, label: index });
     };
 
-    const reset = () => {
-        setBrand({ value: 'all', label: 'Enter the text' });
-        setToPrice({ value: 'all', label: 'To $' });
-        setMileageTo('');
-        setMileageFrom('');
-        setMileageToWithComa('');
-        setMileageFromWithComa('');
-    };
-
-    const onClickFilter = () => {
-        console.log('mileageTo + mileageFrom', mileageFrom, '+', mileageTo);
-    console.log('mileageTo length',  mileageTo.length);
-        console.log('mileageFrom length', mileageFrom.length);
-
+    const onClickSearch = () => {
         if ((mileageFrom.length > 0 && mileageTo.length === 0) || (mileageFrom.length === 0 && mileageTo.length > 0)) {
-                Report.failure('Failure',
-                    'Please fill in both search fields by car mileage',
-                    'Okay',
-                    options
-                );
+            Report.failure('Failure',
+                'Please fill in both search fields by car mileage',
+                'Okay',
+                options
+            );
             return;
         };
 
         if (mileageFrom !== '' && mileageTo !== '' && parseInt(mileageFrom) >= parseInt(mileageTo)) {
-                Report.failure('Failure',
-                    'Mileage "From" must be less than mileage "To"',
-                    'Okay',
-                    options
-                );
+            Report.failure('Failure',
+                'Mileage "From" must be less than mileage "To"',
+                'Okay',
+                options
+            );
             return;
         };
 
@@ -69,7 +58,6 @@ export const Filters = () => {
                 to: mileageTo
             }
         };
-        console.log(commonFilter);
         dispatch(filterSet(commonFilter))
     };
 
@@ -90,6 +78,31 @@ export const Filters = () => {
                 break;
         }
     };
+
+    const onClickResetMileage = (inputName) => {
+        switch (inputName) {
+            case 'mileageFrom':
+                setMileageFrom('');
+                setMileageFromWithComa('');
+                break;
+            case 'mileageTo':
+                setMileageTo('');
+                setMileageToWithComa('');
+                break;
+            default:
+                break;
+        }
+    };
+
+    const onClickResetAll = () => {
+        setBrand({ value: 'all', label: 'Enter the text' });
+        setToPrice({ value: 'all', label: '' });
+        setMileageTo('');
+        setMileageFrom('');
+        setMileageToWithComa('');
+        setMileageFromWithComa('');
+        onClickSearch();
+    };
     
     return (
         <Form>
@@ -108,10 +121,12 @@ export const Filters = () => {
                     onChange={setToPrice}
                     options={pricesArray}
                     isSearchable
-                    placeholder='To   $'
+                    placeholder=''
                     styles={secondSelectStyles}
                     value={toPrice}
                 />
+                <FalseInput $left='18px'>To</FalseInput>
+                <FalseInput $left='75px'>$</FalseInput>
             </Label>
             <InputWrap>
                 <Label>Сar mileage / km
@@ -130,6 +145,12 @@ export const Filters = () => {
                     <FalseInput>From {mileageFromWithComa}
                         {mileageFromWithComa.length > 0 && <Blink></Blink>}
                     </FalseInput>
+                    {mileageFrom.length > 0 && <CloseBtnWrapper
+                        $top='38px' $right='6px'
+                        onClick={() => onClickResetMileage('mileageFrom')}
+                    >
+                        <use href={`${sprite}#icon-x`} />
+                    </CloseBtnWrapper>}
                 </Label>
                 <WrapSecondInput>
                     <Input type="number"
@@ -146,10 +167,20 @@ export const Filters = () => {
                     <FalseInput>To {mileageToWithComa}
                         {mileageToWithComa.length > 0 && <Blink></Blink>}
                     </FalseInput>
+                    {mileageTo.length > 0 && <CloseBtnWrapper
+                        $top='20px' $right='14px'
+                        onClick={() => onClickResetMileage('mileageTo')}
+                    >
+                        <use href={`${sprite}#icon-x`} />
+                    </CloseBtnWrapper>}
                 </WrapSecondInput>
             </InputWrap>
+            {(brand.value !== 'all' || toPrice.value !== 'all' || mileageFrom !== '' || mileageTo !== '') &&
+                <ButtonSearch type="button" width='80px'
+                onClick={onClickResetAll}
+            >Reset</ButtonSearch>}
             <ButtonSearch type="button"
-                onClick={onClickFilter}
+                onClick={onClickSearch}
             >Search</ButtonSearch>
         </Form>
     )

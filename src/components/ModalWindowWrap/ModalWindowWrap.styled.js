@@ -34,8 +34,8 @@ export const CloseBtnWrapper = styled.svg`
   width: 24px;
   height: 24px;
   stroke: var(--color-text-main);
-  top: 16px;
-  right: 16px;
+  top: ${props => props.$top || '16px'};
+  right: ${props => props.$right || '16px'};
   cursor: pointer;
 `;
 

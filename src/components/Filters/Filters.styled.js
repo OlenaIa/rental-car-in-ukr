@@ -67,7 +67,7 @@ export const FalseInput = styled.div`
   color: var(--color-text-main);
   position: absolute;
   bottom: 14px;
-  left: 24px;
+  left: ${props => props.$left || '24px'};
   font-size: 18px;
   font-weight: 500;
   line-height: 1.1;
@@ -97,7 +97,7 @@ export const WrapSecondInput = styled.div`
 
 export const ButtonSearch = styled.button`
   display: flex;
-  width: 136px;
+  width: ${props => props.width || '136px'};
   height: 48px;
   padding: 14px;
   justify-content: center;
@@ -246,5 +246,6 @@ export const secondSelectStyles = {
     fontWeight: '500',
     lineHeight: '1.11',
     width: '125px',
+    paddingLeft: '21px',
   }),
 };
