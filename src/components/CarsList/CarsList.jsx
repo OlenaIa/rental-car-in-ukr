@@ -59,12 +59,12 @@ export const CarsList = () => {
 
         let filterBrandPriceMileageCars = false;
         if (from !== '' && to !== '' && priceTo !== 'all') {
-            filterBrandPriceMileageCars = filterBrandPriceCars.filter(car => (car.mileage > from && car.mileage < to));
+            filterBrandPriceMileageCars = filterBrandPriceCars.filter(car => (car.mileage > parseInt(from) && car.mileage < parseInt(to)));
         } else {
             if (from !== '' && to !== '' && brand !== 'all') {
-                filterBrandPriceMileageCars = filterBrandCars.filter(car => (car.mileage > from && car.mileage < to));
+                filterBrandPriceMileageCars = filterBrandCars.filter(car => (car.mileage > parseInt(from) && car.mileage < parseInt(to)));
             } else {
-                    filterBrandPriceMileageCars = allCars.filter(car => (car.mileage > from && car.mileage < to));
+                    filterBrandPriceMileageCars = allCars.filter(car => (car.mileage > parseInt(from) && car.mileage < parseInt(to)));
                 }
         };
 

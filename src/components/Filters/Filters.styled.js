@@ -53,8 +53,9 @@ export const Input = styled.input`
     position: absolute;
     bottom: -20px;
     left: 0;
-    content: "Only 5 digits";
+    content: "Only 5 digits. Min - 1 km";
     color: red;
+    white-space: nowrap;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.29;

@@ -5,6 +5,13 @@ import { Blink, ButtonSearch, Form, Input, InputWrap, Label, FalseInput, WrapSec
 import Select from 'react-select';
 import { filterSet } from "redux/filter/filterSlice";
 import { makeComaInMileage } from "service/serviceFunc";
+import { Report } from 'notiflix/build/notiflix-report-aio';
+
+export const options = {
+    svgSize: '42px',
+    position: 'center-center',
+    timeout: 5000,
+}; 
 
 export const Filters = () => {
     const dispatch = useDispatch();
@@ -32,19 +39,34 @@ export const Filters = () => {
     };
 
     const onClickFilter = () => {
-if (mileageFrom !== '' && mileageTo !== '') {
-    if (mileageFrom >= mileageTo) {
-        alert('Mileage "From" must be less than mileage "To"')
-        return;
-    }
+        console.log('mileageTo + mileageFrom', mileageFrom, '+', mileageTo);
+    console.log('mileageTo length',  mileageTo.length);
+        console.log('mileageFrom length', mileageFrom.length);
+
+        if ((mileageFrom.length > 0 && mileageTo.length === 0) || (mileageFrom.length === 0 && mileageTo.length > 0)) {
+                Report.failure('Failure',
+                    'Please fill in both search fields by car mileage',
+                    'Okay',
+                    options
+                );
+            return;
+        };
+
+        if (mileageFrom !== '' && mileageTo !== '' && parseInt(mileageFrom) >= parseInt(mileageTo)) {
+                Report.failure('Failure',
+                    'Mileage "From" must be less than mileage "To"',
+                    'Okay',
+                    options
+                );
+            return;
         };
 
         const commonFilter = {
             brand: brand.value,
             priceTo: toPrice.value,
             mileage: {
-                from: parseInt(mileageFrom),
-                to: parseInt(mileageTo)
+                from: mileageFrom,
+                to: mileageTo
             }
         };
         console.log(commonFilter);
@@ -95,7 +117,7 @@ if (mileageFrom !== '' && mileageTo !== '') {
                 <Label>Сar mileage / km
                     <Input type="number"
                         pattern="[0-9]{1,5}"
-                        title="Only number. From 1 to 5 digits"
+                        title="Only numbers. From 1 to 5 digits. Minimum value of 1 km"
                         name="mileageFrom"
                         value={mileageFrom}
                         onChange={handleChange}
@@ -112,22 +134,22 @@ if (mileageFrom !== '' && mileageTo !== '') {
                 <WrapSecondInput>
                     <Input type="number"
                         pattern="[0-9]{1,5}"
-                        title="Only number. From 1 to 5 digits"
-                    name="mileageTo"
-                    value={mileageTo}
+                        title="Only numbers. From 1 to 5 digits. Minimum value of 1 km"
+                        name="mileageTo"
+                        value={mileageTo}
                         onChange={handleChange}
                         min="1"
                         max='99999'
-                        $radius='0px 14px 14px 0px' 
+                        $radius='0px 14px 14px 0px'
                         $padding='14px 14px 14px 48px' />
-                                        <span></span>
+                    <span></span>
                     <FalseInput>To {mileageToWithComa}
-                                                {mileageToWithComa.length > 0 && <Blink></Blink>}
+                        {mileageToWithComa.length > 0 && <Blink></Blink>}
                     </FalseInput>
                 </WrapSecondInput>
             </InputWrap>
             <ButtonSearch type="button"
-            onClick={onClickFilter}
+                onClick={onClickFilter}
             >Search</ButtonSearch>
         </Form>
     )

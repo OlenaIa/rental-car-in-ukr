@@ -12,7 +12,7 @@ export const CarItem = ({ car, index }) => {
     const dispatch = useDispatch();
     const favoriteCarsId = useSelector(selectFavoriteCars);
 
-    const { id, make, model, year, img, rentalPrice, rentalCompany, type, functionalities, address } = car;
+    const { mileage, id, make, model, year, img, rentalPrice, rentalCompany, type, functionalities, address } = car;
     const cityCountry = address?.split(', ').slice(-2);
     
     const [isCarFavorite, setIsCarFavorite] = useState(false);
@@ -58,7 +58,7 @@ const toggleModal = () => {
                     </TitleWrap>
                     <DescriptListWrap height='36px'>
                         <DescriptList $overflow='hidden'>
-                            <DescriptItem>{cityCountry[0]}</DescriptItem>
+                            <DescriptItem>{mileage}</DescriptItem>
                             <DescriptItem>{cityCountry[1]}</DescriptItem>
                             <DescriptItem>{rentalCompany}</DescriptItem>
                             {/* <DescriptItem>Premium</DescriptItem> */}

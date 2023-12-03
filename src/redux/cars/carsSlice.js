@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
-import { getCarsThunk, getAllCarsThunk, getFilterCarsThunk } from './fetchCar';
+import {
+    getCarsThunk,
+    getAllCarsThunk,
+    // getFilterCarsThunk
+} from './fetchCar';
 // import { nanoid } from 'nanoid'
 
 const carsInitialState = {
@@ -20,7 +24,11 @@ const onRejected = (state, { payload }) => {
     state.error = payload;
 };
 
-const arrOfActs = [getAllCarsThunk, getCarsThunk, getFilterCarsThunk];
+const arrOfActs = [
+    getAllCarsThunk,
+    getCarsThunk,
+    // getFilterCarsThunk
+];
 
 const addStatusToActs = status =>
     arrOfActs.map((el) => el[status]);
@@ -46,11 +54,11 @@ const carsSlice = createSlice({
                 state.cars = [...state.cars, ...payload];
                 state.error = null;
             })
-            .addCase(getFilterCarsThunk.fulfilled, (state, { payload }) => {
-                state.isLoading = false;
-                state.cars = payload;
-                state.error = null;
-            })
+            // .addCase(getFilterCarsThunk.fulfilled, (state, { payload }) => {
+            //     state.isLoading = false;
+            //     state.cars = payload;
+            //     state.error = null;
+            // })
             .addMatcher(isAnyOf(...addStatusToActs('pending')), onPending)
             .addMatcher(isAnyOf(...addStatusToActs('rejected')), onRejected)
     }
