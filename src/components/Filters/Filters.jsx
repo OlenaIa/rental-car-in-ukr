@@ -32,13 +32,19 @@ export const Filters = () => {
     };
 
     const onClickFilter = () => {
-        console.log('typeof filterMileageFrom', typeof filterMileageFrom); 
+if (mileageFrom !== '' && mileageTo !== '') {
+    if (mileageFrom >= mileageTo) {
+        alert('Mileage "From" must be less than mileage "To"')
+        return;
+    }
+        };
+
         const commonFilter = {
             brand: brand.value,
             priceTo: toPrice.value,
             mileage: {
-                from: mileageFrom,
-                to: mileageTo
+                from: parseInt(mileageFrom),
+                to: parseInt(mileageTo)
             }
         };
         console.log(commonFilter);

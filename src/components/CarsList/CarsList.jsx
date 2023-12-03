@@ -55,18 +55,35 @@ export const CarsList = () => {
         console.log('filterBrandPriceCars', filterBrandPriceCars)
         // priceTo === 'all' -> filterBrandCars || allCars
 
-        // mileage !== 'all' -> filterBrandCars(true) -> filterBrandCars.filter -> filterBrandPriceCars
+        // mileage !== '' -> filterBrandPriceCars(true)) -> filterBrandPriceCars.filter -> filterBrandPriceMileageCars
 
-
-        if (priceTo !== 'all') {
-            dispatch(filterCarsSet(filterBrandPriceCars))
+        let filterBrandPriceMileageCars = false;
+        if (from !== '' && to !== '' && priceTo !== 'all') {
+            filterBrandPriceMileageCars = filterBrandPriceCars.filter(car => (car.mileage > from && car.mileage < to));
         } else {
-           if (brand !== 'all') {
-            dispatch(filterCarsSet(filterBrandCars))
-           } else {
-               return;
-           }
-        }
+            if (from !== '' && to !== '' && brand !== 'all') {
+                filterBrandPriceMileageCars = filterBrandCars.filter(car => (car.mileage > from && car.mileage < to));
+            } else {
+                    filterBrandPriceMileageCars = allCars.filter(car => (car.mileage > from && car.mileage < to));
+                }
+        };
+
+        console.log('filterBrandPriceMileageCars', filterBrandPriceMileageCars);
+        
+
+        if ((from !== '' && to !== '')) {
+            dispatch(filterCarsSet(filterBrandPriceMileageCars))
+        } else {
+            if (priceTo !== 'all') {
+                dispatch(filterCarsSet(filterBrandPriceCars))
+            } else {
+                if (brand !== 'all') {
+                    dispatch(filterCarsSet(filterBrandCars))
+                } else {
+                    return;
+                }
+            }
+        };
 
     }, [dispatch, filter, allCars]);
 
