@@ -1,31 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const filterInitialState = {
-    brand: { value: 'all', label: 'Enter the text' },
-    toPrice: { value: 'all', label: 'To $' },
-    mileageFrom: 0,
-    mileageTo: 0,
+    filter: null,
+    filterCars: [],
 };
 
 export const filterSlice = createSlice({
     name: 'filter',
     initialState: filterInitialState,
     reducers: {
-        brandSet(state, {payload}) {
-            state.brand = payload;
+        filterSet(state, { payload }) {
+            state.filter = payload;
         },
-        toPriceSet(state, { payload }) {
-            state.toPrice = payload;
+        filterDelete(state, { payload }) {
+            state.filter = null;
         },
-        mileageFromSet(state, { payload }) {
-            state.mileageFrom = payload;
+        filterCarsSet(state, { payload }) {
+            state.filterCars = payload;
         },
-        mileageToSet(state, { payload }) {
-            state.mileageTo = payload;
-        }
     },
-    });
+});
 
 export const filterReducer = filterSlice.reducer;
 
-export const { brandSet, toPriceSet, mileageFromSet, mileageToSet} = filterSlice.actions;
+export const { filterSet, filterCarsSet, filterDelete} = filterSlice.actions;

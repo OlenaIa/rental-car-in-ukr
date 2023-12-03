@@ -1,45 +1,48 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectBrand, selectCarBrands, selectMileageFrom, selectMileageTo, selectToPrice } from "redux/selectors";
+import { selectCarBrands } from "redux/selectors";
 import { Blink, ButtonSearch, Form, Input, InputWrap, Label, FalseInput, WrapSecondInput, firstSelectStyles, secondSelectStyles } from "./Filters.styled";
 import Select from 'react-select';
-import { brandSet, mileageFromSet, mileageToSet, toPriceSet } from "redux/filter/filterSlice";
+import { filterSet } from "redux/filter/filterSlice";
 import { makeComaInMileage } from "service/serviceFunc";
 
 export const Filters = () => {
     const dispatch = useDispatch();
     const carBrands = useSelector(selectCarBrands);
-    const filterBrand = useSelector(selectBrand);
-    const filterToPrice = useSelector(selectToPrice);
-    const filterMileageFrom = useSelector(selectMileageFrom);
-    const filterMileageTo = useSelector(selectMileageTo);
 
-    console.log('filterToPrice', filterToPrice);
-    console.log('filterMileageFrom', filterMileageFrom);
-    console.log('filterMileageTo', filterMileageTo);
-
+    const [brand, setBrand] = useState({ value: 'all', label: 'Enter the text' });
+    const [toPrice, setToPrice] = useState({ value: 'all', label: 'To $' });
+    const [mileageTo, setMileageTo] = useState('');
+    const [mileageFrom, setMileageFrom] = useState('');
     const [mileageToWithComa, setMileageToWithComa] = useState('');
     const [mileageFromWithComa, setMileageFromWithComa] = useState('');
 
-   
-    const pricesArray = [];
+    const pricesArray = [{ value: 'all', label: 'All price' }];
     for (let index = 30; index < 501; index += 10) {
         pricesArray.push({ value: index, label: index });
     };
 
- const reset = () => {
-        dispatch(mileageFromSet(null));
-        dispatch(mileageFromSet(null));
+    const reset = () => {
+        setBrand({ value: 'all', label: 'Enter the text' });
+        setToPrice({ value: 'all', label: 'To $' });
+        setMileageTo('');
+        setMileageFrom('');
         setMileageToWithComa('');
         setMileageFromWithComa('');
     };
 
-    const onSubmitFilter = (event) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        // const searchValue = form.search.value
-        console.log('form', form);
-        reset();
+    const onClickFilter = () => {
+        console.log('typeof filterMileageFrom', typeof filterMileageFrom); 
+        const commonFilter = {
+            brand: brand.value,
+            priceTo: toPrice.value,
+            mileage: {
+                from: mileageFrom,
+                to: mileageTo
+            }
+        };
+        console.log(commonFilter);
+        dispatch(filterSet(commonFilter))
     };
 
     const handleChange = (e) => {
@@ -48,11 +51,11 @@ export const Filters = () => {
 
         switch (e.target.name) {
             case 'mileageFrom':
-                dispatch(mileageFromSet(value));
+                setMileageFrom(value);
                 setMileageFromWithComa(valueWithComa);
                 break;
             case 'mileageTo':
-                dispatch(mileageToSet(value));
+                setMileageTo(value);
                 setMileageToWithComa(valueWithComa);
                 break;
             default:
@@ -60,36 +63,26 @@ export const Filters = () => {
         }
     };
     
-    const onChangeBrand = (e) => {
-        console.log('e', e);
-        dispatch(brandSet(e));
-    };
-
-    const onChangeToPrice = (e) => {
-        console.log('e', e);
-        dispatch(toPriceSet(e));
-    };
-    
     return (
         <Form>
             <Label>Car brand
                 <Select
-                    onChange={onChangeBrand}
+                    onChange={setBrand}
                     options={carBrands}
                     isSearchable
                     placeholder='Enter the text'
                     styles={firstSelectStyles}
-                    value={filterBrand}
+                    value={brand}
                 />
             </Label>
             <Label>Price/ 1 hour
                 <Select
-                    onChange={onChangeToPrice}
+                    onChange={setToPrice}
                     options={pricesArray}
                     isSearchable
                     placeholder='To   $'
                     styles={secondSelectStyles}
-                    value={filterToPrice}
+                    value={toPrice}
                 />
             </Label>
             <InputWrap>
@@ -98,7 +91,7 @@ export const Filters = () => {
                         pattern="[0-9]{1,5}"
                         title="Only number. From 1 to 5 digits"
                         name="mileageFrom"
-                        value={filterMileageFrom}
+                        value={mileageFrom}
                         onChange={handleChange}
                         min="1"
                         max='99998'
@@ -115,7 +108,7 @@ export const Filters = () => {
                         pattern="[0-9]{1,5}"
                         title="Only number. From 1 to 5 digits"
                     name="mileageTo"
-                    value={filterMileageTo}
+                    value={mileageTo}
                         onChange={handleChange}
                         min="1"
                         max='99999'
@@ -127,8 +120,8 @@ export const Filters = () => {
                     </FalseInput>
                 </WrapSecondInput>
             </InputWrap>
-            <ButtonSearch type="submit"
-            onSubmit={onSubmitFilter}
+            <ButtonSearch type="button"
+            onClick={onClickFilter}
             >Search</ButtonSearch>
         </Form>
     )
