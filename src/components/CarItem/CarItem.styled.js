@@ -136,7 +136,7 @@ export const DescriptList = styled.ul`
   gap: 6px;
   color: var(--color-text-second);
   white-space: nowrap;
-  overflow-x: ${props => props.$overflow || 'scroll'};
+  overflow-x: ${props => props.$overflow || 'hidden'};
   overflow-y: hidden;
 `;
 
