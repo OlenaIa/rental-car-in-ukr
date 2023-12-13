@@ -1,152 +1,163 @@
-# Застосунок для компанії по аренді автомобілів
+## App for a car rental company
 
-## Опис
+## Description.
 
-Застосунок складається з 3х сторінок:
+The application consists of 3 pages:
 
-- домашня сторінка з загальним описом послуг, що надає компанія.
-- сторінка, що містить каталог автівок різної комплектації, які користувач може
-  фільтрувати за маркою, ціною за годину оренди авто та кількістю кілометрів,
-  яку подолав автомобіль під час його експлуатації (пробіг).
-- сторінка з оголошеннями, які були додані користувачем в улюблені.
+- home page with a general description of the services provided by the company.
+- a page containing a catalogue of cars of various configurations, which the
+  user can filter by brand, price per hour of car rental and number of
+  kilometres, travelled by the car during its operation (mileage).
+- a page with ads that have been added to the user's favourites.
 
-На всіх сторінка є хедер з меню сторінок, область перегляду головної інформації,
-та футер з контактом власника застосунку.
+All pages have a header with a page menu, a viewing area for the main
+information, and a footer with the contact details of the app owner.
 
-## Домашня сторінка
+## Home page.
 
-1. Має секцію-герой з загальним описом послуги та посилання на сторінку каталога
-   автомобілів.
-2. При необхідності в подальшому можуть бути додані секції з інформацією про
-   компанію, детальним описом послуг та умов аренди авто.
+1. It has a hero section with a general description of the service and a link to
+   the catalogue page car catalogue page.
+2. If necessary, sections with information about the company, detailed
+   description of services and car rental conditions.
 
-## Сторінка каталогу автомобілей
+## Car catalogue page
 
-### Секція з картками автомобілей
+### Section with car cards
 
-1. При відкритті сторінки рендериться 12 перших оголошень по аренді авто з бази.
-2. Кожні наступну 12 оголошень з бази можна догрузити на сторінку по кліку на
-   кнопку `Load more`. Вона знаходиться під оголошеннями.
-3. Коли всі оголошення з бази завантажені, кнопка `Load more` зникає.
-4. У разі кліку по кнопці у вигляді “серця” на картці оголошення воно додається
-   до списку улюблених, а колір кнопки змінюється на блакитний.
-5. При оновленні сторінки фіксується кінцевий результат дій користувача (обрані
-   авто залишаються в списку обраних). Реалізовано за допомогою local storage.
-6. У разі повторного кліку по кнопці у вигляді “серця” оголошення видаляється зі
-   списку улюблених, а колір кнопки змінитись до початкового стану.
-7. У разі кліку по кнопці Learn more відкривається модальне вікно з детальною
-   інформацією про авто та умови його оренди.
+1. When you open the page, the first 12 car rental ads from the database are
+   rendered.
+2. Each next 12 ads from the database can be loaded on the page by clicking on
+   the `Load more` button. It is located under the ads.
+3. When all the ads from the database are loaded, the `Load more` button
+   disappears.
+4. When you click on the heart button on the ad card, it is added to the list of
+   favourites to the list of favourites, and the colour of the button changes to
+   blue.
+5. When the page refreshes, the end result of the user's actions is recorded
+   (favourites cars remain in the list of favourites). Implemented using local
+   storage.
+6. If you click on the "heart" button again, the advert is removed from the the
+   list of favourites, and the colour of the button changes to its original
+   state.
+7. Clicking on the Learn more button opens a modal window with detailed
+   information about the car and its rental conditions.
 
-### Модальне вікно з детальною інформацією про авто
+### Modal window with detailed information about the car
 
-1. Модальне вікно закривається по кліку на кнопку у вигляді “хрестика”, по кліку
-   на `backdrop` або натисканню на клавішу `Esc`.
-2. Кнопка `Rental car` надає можливість користувачу зʼєднатись з компанією за
-   номером телефону +380730000000.
+1. The modal window is closed by clicking on the button in the form of a
+   "cross", by clicking on the `backdrop` button or by pressing the `Esc` key.
+2. The `Rental car` button allows the user to contact the company by phone
+   number +380730000000.
 
-### Секція фільтрації карток автомобілей
+   ### Vehicle card filtering section
 
-1. Перше поле пошуку авто за брендом реалізовано за допомогою `dropdown` із
-   марками автомобіля. Список автомобільних брендів складається з усіх брендів,
-   що вже є в базі даних.
-2. Друге поле пошуку авто в ціновому діапазоні до вказаної суми за годину оренди
-   авто реалізовано за допомогою `dropdown`. Крок 10$.
-3. Третя група `input` дозволяє обирати авто в обраному проміжку його пробігу.
-   Користувач в поле вбиває ціле число, а воно відображається через кому, після
-   тисяч (наприклад, користувач вводить 4500 і бачить 4,500).
-4. Поля пробігу авто можна скинути кнопкою `видалити` (з хрестиком). Вона
-   з'являється, як тільки поле перестає бути пустим.
-5. Всі обрані фільтри модна скинути одночасно кнопкою `Reset`, що з'являється
-   при умові хоч одного заданого фільтра.
-6. Пошук авто відбувається при натисненні на кнопку `Search`.
+3. The first car search field by brand is implemented using `dropdown` with car
+   brands. The list of car brands consists of all brands, that are already in
+   the database.
+4. The second search field for cars in the price range up to the specified
+   amount per hour of rent the car is implemented with the help of `dropdown`.
+   The step is $10.
+5. The third group of `input` allows you to choose a car in the selected
+   interval of its mileage. The user enters an integer into the field, and it is
+   displayed separated by commas, after thousands (for example, the user enters
+   4500 and sees 4,500).
+6. The car mileage fields can be reset by pressing the 'delete' button (with a
+   cross). It appears as soon as the field is no longer empty.
+7. All selected filters can be reset simultaneously by pressing the `Reset`
+   button that appears button that appears if at least one filter is selected.
+8. The car search is performed by pressing the `Search` button.
 
-## Сторінка обраних авто
+## Page of selected cars
 
-1. Рендерить ті авто, що були додані до списку обраних.
-2. Якщо ні одного обраного авто немає, відображається пуста сторінка з
-   пропозицією відвідати каталог авто і кнопкою-посиланням на каталог.
+1. Renders the cars that have been added to the list of favourites.
+2. If there are no selected cars, a blank page is displayed with a blank page
+   with an offer to visit the car catalogue and a link to the catalogue.
 
-# Тестове завдання
+## Test task
 
-## Опис
+## Description.
 
-Створити застосунок для компанії, що надає послуги надання в Україні автомобілів
-в оренду. Застосунок складається з 3х сторінок:
+Create an application for a company that provides car rental services in
+Ukraine. for rent in Ukraine. The application consists of 3 pages:
 
-- домашня сторінка з загальним описом послуг, що надає компанія. Стилізація та
-  оформлення на ваш розсуд.
-- сторінка, що містить каталог автівок різної комплектації, які користувач може
-  фільтрувати за маркою, ціною за годину оренди авто та кількістю кілометрів,
-  яку подолав автомобіль під час його експлуатації (пробіг).
-- сторінка з оголошеннями, які були додані користувачем в улюблені Зовнішній
-  вигляд програми повинен складатися з cайдбару та області перегляду.
+- home page with a general description of the services provided by the company.
+  Styling and design is at your discretion.
+- a page containing a catalogue of cars of various configurations, which the
+  user can filter by brand, price per hour of car rental, and number of
+  kilometres, travelled by the car during its operation (mileage).
+- a page with ads that have been added to the user's favourites The external The
+  appearance of the application should consist of a sidebar and a viewing area.
 
-## Технічне завдання
+## Terms of reference
 
-1. Відповідно до
-   [макету](https://www.figma.com/file/XhC8FSCfAkraEF5l7Hx4fL/Test?type=design&node-id=0-1&mode=design&t=Ed3b0heFOmE2LSXU-0)
-   реалізувати картку оголошення про здачу авто в оренду.
-2. На першій сторінці каталогу має рендеритися 8 оголошень, а їх решта - по
-   кліку на кнопку `Load more`.
-3. У разі кліку по кнопці у вигляді “серця” на картці оголошення воно має
-   додаватися до списку улюблених, а колір кнопки змінюватися.
-4. При оновленні сторінки має фіксуватись кінцевий результат дій користувача.
-   Тобто, якщо додати оголошення в улюблені та оновити сторінку - то кнопка все
-   одно залишається в стані “улюбленого оголошення” із відповідним кольором.
-5. У разі повторного кліку по кнопці у вигляді “серця” оголошення повинно бути
-   видалене зі списку улюблених, а колір кнопки змінитись до початкового стану.
-6. У разі кліку по кнопці Learn more має відкриватись модальне вікно з детальною
-   інформацією про авто та умови його оренди.
-7. Модальне вікно повинно закриватись по кліку на кнопку у вигляді “хрестика”,
-   по кліку на `backdrop` або натисканню на клавішу `Esc`.
-8. В коді пробіг авто має бути прописаний одним значенням (наприклад, 4500). В
-   UI - виведено через кому (4,500).
-9. Кнопку `Rental car` слід реалізувати як посилання, що надаватиме можливість
-   користувачу зʼєднатись з компанією за номером телефону +380730000000.
+1. According to.
+   [layout](https://www.figma.com/file/XhC8FSCfAkraEF5l7Hx4fL/Test?type=design&node-id=0-1&mode=design&t=Ed3b0heFOmE2LSXU-0)
+   implement a car rental ad card.
+2. On the first page of the catalogue, 8 ads should be rendered, and the rest
+   should be by clicking on the `Load more` button.
+3. When you click on the "heart" button on the ad card, it should should be
+   added to the list of favourites and the colour of the button should change.
+4. When the page is refreshed, the end result of the user's actions should be
+   recorded. That is, if you add an ad to your favourites and refresh the page,
+   the button still still remains in the "favourite ad" state with the
+   corresponding colour.
+5. If you click on the heart button again, the ad should be removed from the
+   list of favourites, and the colour of the button should change to its
+   original state.
+6. When you click on the Learn more button, a modal window should open with
+   detailed information about the car and its rental conditions.
+7. The modal window should be closed by clicking on the "cross" button, by
+   clicking on the `backdrop` button or by pressing the `Esc` key.
+8. In the code, the mileage of the car must be written in one value (for
+   example, 4500). В UI - it is displayed separated by commas (4,500).
+9. The `Rental car` button should be implemented as a link that will allow the
+   user to contact the company by phone number +380730000000.
 
-Створи маршрутизацію, використовуючи `React Router`. У застосунку повинні бути
-такі маршрути:
+Create a routing using React Router. The application should have the following
+routes:
 
-- `“/”` - домашня сторінка з загальним описом послуг, що надає компанія
-- `“/catalog”` - сторінка, що містить каталог автівок різної комплектації
-- `“/favorites”` - сторінка з оголошеннями, які були додані користувачем в
-  улюблені Якщо користувач зайшов за маршрутом, якого не існує, його необхідно
-  перенаправляти на домашню сторінку. Для роботи зі списком оголошень створи
-  свій персональний бекенд для розробки за допомогою UI-сервісу
-  https://mockapi.io/. Створи ресурс adverts. Використай конструктор ресурсу та
-  опиши об'єкт оголошення, як описано нижче.
+- `"/"` - the home page with a general description of the services provided by
+  the company
+- `"/catalogue"` - a page containing a catalogue of cars of different
+  configurations
+- `"/favourites"` - a page with ads that have been added by the user to
+  favourites If the user has followed a route that does not exist, he must be
+  redirect to the home page. To work with the list of ads, create your personal
+  backend for development using the UI service https://mockapi.io/. Create the
+  adverts resource. Use the resource builder and describe the advert object as
+  described below.
 
 Advert
 
-1. Створіть `advert` в **Mockapi** з наступними полями: `id`, `year`, `make`,
-   `model`, `type`, `img`, `description`, `fuelConsumption`, `engineSize`,
-   `accessories`, `functionalities`, `rentalPrice`, `rentalCompany`, `address`,
-   `rentalConditions`, `mileage` (див. скріншот нижче). Для наповнення колекції
-   можна взяти
+1. Create an `advert` in **Mockapi** with the following fields: `id`, `year`,
+   `make`, `model`, `type`, `img`, `description`, `fuelConsumption`,
+   `engineSize`, `accessories`, `functionalities`, `rentalPrice`,
+   `rentalCompany`, `address`, `rentalConditions`, `mileage` (see the screenshot
+   below). To fill the collection you can take
    [adverts.json](https://drive.google.com/file/d/1sDtZQX4awbRiqa5mSagngqKBZeMMRUMO/view)
-2. Зображення авто можете підібрати самостійно.
-3. В базі має бути від 32 оголошень з різними значеннями (на ваш розсуд).
-   Реалізована пагінація, де одна сторінка пагінації повинна вміщати 8
-   оголошень.
+2. You can choose the car image yourself.
+3. The database should contain at least 32 ads with different values (at your
+   discretion). Pagination is implemented, where one pagination page should
+   contain 8 ads.
 
-## Додаткове завдання
+## Additional task
 
-Додай фільтрацію:
+Add filtering:
 
-1. `dropdown` із марками автомобіля
+1. `dropdown` with car brands
    [makes.json](https://drive.google.com/file/d/1ywi6jdoqq0llsd2yDcRKwuLhuL3ds_5z/view) -
-   показати оголошення з автівками відповідної марки
-2. `dropdown` із цінами за годину оренди авто (крок 10$) - показати оголошення з
-   автівками, ціна за оренду яких належить до діапазону цін, обраних
-   користувачем
-3. група `input` для визначення діапазону пробігу, в межах якого користувач
-   шукатиме оголошення
+   show ads with cars of the corresponding brand
+2. `dropdown` with prices per hour of car rental ($10 increments) - show ads
+   with cars whose rental price is within the price range selected by the by the
+   user
+3. group `input` to determine the range of mileage within which the user will
+   search for ads
 
-## Критерії виконання
+## Execution criteria
 
-- Верстка фіксована в `рх`, семантична та валідна.
-- Немає помилок в консолі браузера.
-- Інтерактивність працює відповідно до технічного завдання.
-- Код відформатований та без коментарів.
-- В репозиторії має бути описаний **README.md**.
-- Проєкт задеплоїний на **github pages** або **netlify.com**
+- The layout is fixed in `rx`, semantic and valid.
+- There are no errors in the browser console.
+- Interactivity works according to the terms of reference.
+- The code is formatted and without comments.
+- The **README.md** should be described in the repository.
+- The project is deployed on **github pages** or **netlify.com**.
